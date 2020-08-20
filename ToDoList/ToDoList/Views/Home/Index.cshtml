@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ToDoList.Models.Information>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<button>@Html.ActionLink("Add Note","New","Home")</button>
+<table id="information" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Note</th>
+            <th>Subject</th>
+            <th>Date</th>
+            <th>Action</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var info in Model)
+        {
+            <tr>
+                <td>@info.Note</td>
+                <td>@info.Subject</td>
+                <td>@info.Date</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Home", new { id = @info.Id }, null)
+                    @Html.ActionLink("Delete", "Delete", "Home", new { id = @info.Id }, null)
+                </td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
+
+
